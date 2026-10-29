@@ -1,0 +1,95 @@
+/*
+ * COMP 2233: DATA STRUCTURES LABORATORY - LAB 3
+ * EXPERIMENT 2 TEMPLATE: PHONE BOOK USING A C++ VECTOR
+ */
+
+#include <iostream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+struct Contact {
+    string name;
+    string surname;
+    string phone;
+    string email;
+    string birthday;
+};
+
+int read_int(const string &prompt) {
+    string remainder;
+    int value;
+
+    cout << prompt;
+    if (cin >> value) {
+        getline(cin, remainder);
+        return value;
+    }
+    if (cin.eof()) {
+        return 0;
+    }
+    cin.clear();
+    getline(cin, remainder);
+    return -1;
+}
+
+void read_contact(Contact &contact) {
+    cout << "Name: ";
+    getline(cin, contact.name);
+    cout << "Surname: ";
+    getline(cin, contact.surname);
+    cout << "Phone: ";
+    getline(cin, contact.phone);
+    cout << "E-mail: ";
+    getline(cin, contact.email);
+    cout << "Birthday (DD/MM/YYYY): ";
+    getline(cin, contact.birthday);
+}
+
+void add_contact(vector<Contact> &contacts) {
+    /* TODO: Read a contact and add it with push_back. */
+    (void)contacts;
+}
+
+void list_contacts(const vector<Contact> &contacts) {
+    /* TODO: Print all fields for every contact. */
+    (void)contacts;
+}
+
+void remove_contact(vector<Contact> &contacts) {
+    /* TODO: Validate a position and remove that element with erase. */
+    (void)contacts;
+}
+
+void update_contact(vector<Contact> &contacts) {
+    /* TODO: Validate a position and read replacement contact fields. */
+    (void)contacts;
+}
+
+void sort_contacts(vector<Contact> &contacts) {
+    /* TODO: Use nested loops to bubble-sort by surname, then by name. */
+    (void)contacts;
+}
+
+int main() {
+    vector<Contact> contacts;
+    int choice;
+
+    do {
+        cout << "\n=== COMP 2233 LAB 3 - EXPERIMENT 2 ===\n";
+        cout << "1. Add  2. Remove  3. Update  4. Sort  5. View  0. Exit\n";
+        choice = read_int("Choice: ");
+        switch (choice) {
+            case 1: add_contact(contacts); break;
+            case 2: remove_contact(contacts); break;
+            case 3: update_contact(contacts); break;
+            case 4: sort_contacts(contacts); break;
+            case 5: list_contacts(contacts); break;
+            case 0: cout << "Exiting Experiment 2.\n"; break;
+            default: cout << "Invalid choice.\n";
+        }
+    } while (choice != 0);
+
+    return 0;
+}

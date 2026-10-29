@@ -1,0 +1,121 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define NAME_LENGTH 64
+
+typedef struct Student {
+    int number;
+    char name[NAME_LENGTH];
+    double grade;
+    struct Student *next;
+} Student;
+
+Student *find_student(Student *head, int number) {
+
+}
+
+void add_student(Student **head, int number, const char *name, double grade) {
+
+}
+
+void remove_student(Student **head, int number) {
+
+}
+
+void update_student(Student *head, int number, const char *name, double grade) {
+
+}
+
+void list_students(const Student *head) {
+
+}
+
+void reverse_students(Student **head) {
+
+}
+
+void free_students(Student **head) {
+
+}
+
+int main(void) {
+    Student *head = NULL;
+    int choice;
+    int number;
+    char name[NAME_LENGTH];
+    double grade;
+    int status = EXIT_SUCCESS;
+
+    for (;;) {
+        printf("\n1. Add student\n2. Remove student\n3. Update student\n");
+        printf("4. Search student\n5. List students\n6. Reverse list\n");
+        printf("7. Delete all students\n0. Exit\n");
+        printf("Choice: ");
+        if (scanf("%d", &choice) != 1) {
+            fprintf(stderr, "Invalid input.\n");
+            status = EXIT_FAILURE;
+            break;
+        }
+        if (choice == 0) {
+            break;
+        }
+        if (choice >= 1 && choice <= 4) {
+            printf("Student number: ");
+            if (scanf("%d", &number) != 1 || number <= 0) {
+                fprintf(stderr, "Invalid student number.\n");
+                status = EXIT_FAILURE;
+                break;
+            }
+        }
+        switch (choice) {
+            case 1:
+            case 3:
+                printf("Name: ");
+                if (scanf(" %63[^\n]", name) != 1) {
+                    fprintf(stderr, "Invalid name.\n");
+                    free_students(&head);
+                    return EXIT_FAILURE;
+                }
+                printf("Grade: ");
+                if (scanf("%lf", &grade) != 1 || !(grade >= 0 && grade <= 100)) {
+                    fprintf(stderr, "Invalid grade.\n");
+                    free_students(&head);
+                    return EXIT_FAILURE;
+                }
+                if (choice == 1) {
+                    add_student(&head, number, name, grade);
+                } else {
+                    update_student(head, number, name, grade);
+                }
+                break;
+            case 2:
+                remove_student(&head, number);
+                break;
+            case 4: {
+                Student *student = find_student(head, number);
+                if (student == NULL) {
+                    printf("Student not found.\n");
+                } else {
+                    printf("%d | %s | %.2f\n",
+                           student->number, student->name, student->grade);
+                }
+                break;
+            }
+            case 5:
+                list_students(head);
+                break;
+            case 6:
+                reverse_students(&head);
+                break;
+            case 7:
+                free_students(&head);
+                break;
+            default:
+                printf("Invalid choice.\n");
+                break;
+        }
+    }
+    free_students(&head);
+    return status;
+}

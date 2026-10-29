@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Node {
+    int value;
+    struct Node *next;
+} Node;
+
+int append_node(Node **head, int value) {
+
+}
+
+Node *merge_lists(Node **first, Node **second) {
+
+}
+
+void print_list(const Node *head) {
+
+}
+
+void free_list(Node **head) {
+
+}
+
+int main(void) {
+    Node *lists[2] = {NULL, NULL};
+    Node *merged = NULL;
+    int status = EXIT_SUCCESS;
+
+    for (int list = 0; list < 2 && status == EXIT_SUCCESS; list++) {
+        int count;
+        int previous = 0;
+
+        printf("List %d (nondecreasing order)\n", list + 1);
+        printf("Number of elements: ");
+        if (scanf("%d", &count) != 1 || count < 0) {
+            fprintf(stderr, "Invalid element count.\n");
+            status = EXIT_FAILURE;
+            break;
+        }
+        for (int index = 0; index < count; index++) {
+            int value;
+
+            printf("Value: ");
+            if (scanf("%d", &value) != 1 || (index > 0 && value < previous)) {
+                fprintf(stderr, "Invalid value or list is not sorted.\n");
+                status = EXIT_FAILURE;
+                break;
+            }
+            if (!append_node(&lists[list], value)) {
+                status = EXIT_FAILURE;
+                break;
+            }
+            previous = value;
+        }
+    }
+    if (status == EXIT_SUCCESS) {
+        merged = merge_lists(&lists[0], &lists[1]);
+        printf("Merged list: ");
+        print_list(merged);
+    }
+    free_list(&lists[0]);
+    free_list(&lists[1]);
+    free_list(&merged);
+    return status;
+}

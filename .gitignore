@@ -1,2 +1,18 @@
-*.exe 
-.vscode/ 
+# Compiled binaries
+*.exe
+*.out
+*.o
+*.obj
+
+# Build directories
+build/
+dist/
+
+# IDE / Editor
+.vscode/settings.json
+*.user
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,97 @@
+/*
+ * COMP 2233: DATA STRUCTURES LABORATORY - LAB 3
+ * EXPERIMENT 1 TEMPLATE: MUSIC PLAYLIST USING A C ARRAY
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_SONGS 10
+#define TITLE_LENGTH 64
+
+void read_text(const char *prompt, char *destination, int capacity) {
+    int character;
+    int index;
+
+    printf("%s", prompt);
+    if (fgets(destination, capacity, stdin) == NULL) {
+        destination[0] = '\0';
+        return;
+    }
+    index = 0;
+    while (destination[index] != '\n' && destination[index] != '\0') {
+        index++;
+    }
+    if (destination[index] == '\n') {
+        destination[index] = '\0';
+    } else {
+        while ((character = getchar()) != '\n' && character != EOF) {
+        }
+    }
+}
+
+int read_int(const char *prompt) {
+    char line[32];
+    char *end;
+    long value;
+
+    read_text(prompt, line, sizeof(line));
+    value = strtol(line, &end, 10);
+    return end == line ? -1 : (int)value;
+}
+
+void list_songs(char songs[][TITLE_LENGTH], int count) {
+    /* TODO: Print each active song with its one-based position. */
+    (void)songs;
+    (void)count;
+}
+
+void add_song(char songs[][TITLE_LENGTH], int *count) {
+    /* TODO: Check capacity, read a title, and increase count. */
+    (void)songs;
+    (void)count;
+}
+
+void remove_song(char songs[][TITLE_LENGTH], int *count) {
+    /* TODO: Validate a position, shift later songs left, and decrease count. */
+    (void)songs;
+    (void)count;
+}
+
+void update_song(char songs[][TITLE_LENGTH], int count) {
+    /* TODO: Validate a position and read the replacement title. */
+    (void)songs;
+    (void)count;
+}
+
+void swap_songs(char songs[][TITLE_LENGTH], int count) {
+    /* TODO: Validate two positions and exchange their titles. */
+    (void)songs;
+    (void)count;
+}
+
+int main(void) {
+    char songs[MAX_SONGS][TITLE_LENGTH] = {
+        "Imagine", "Take Five", "Billie Jean"
+    };
+    int count = 3;
+    int choice;
+
+    do {
+        printf("\n=== COMP 2233 LAB 3 - EXPERIMENT 1 ===\n");
+        printf("1. Add  2. Remove  3. Update  4. Swap  5. View  0. Exit\n");
+        choice = read_int("Choice: ");
+        switch (choice) {
+            case 1: add_song(songs, &count); break;
+            case 2: remove_song(songs, &count); break;
+            case 3: update_song(songs, count); break;
+            case 4: swap_songs(songs, count); break;
+            case 5: list_songs(songs, count); break;
+            case 0: printf("Exiting Experiment 1.\n"); break;
+            default: printf("Invalid choice.\n");
+        }
+    } while (choice != 0);
+
+    return 0;
+}

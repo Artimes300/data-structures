@@ -51,5 +51,32 @@ int main()
     for (int q = 0; q * q < n; q++) {
         cout << q << endl;
     }
-    return 0;
+
+/*
+Traslation of the pseudocode to C++:
+START
+INPUT A
+SET sum ← 0
+SET product ← 1
+
+FOR i ← 0 TO n - 1 DO
+    sum ← sum + A[i]
+    product ← product × A[i]
+
+PRINT sum
+PRINT product
+*/
+cout << endl;
+int A[] = {3, 5, 2, 4}; // Example initialization of array A
+int sum1 = 0;
+int product = 1;
+int size = sizeof(A) / sizeof(A[0]);
+for (int a = 0; a < size; a++) {
+    sum1 += A[a];
+    product *= A[a];
+}
+cout << sum1 << endl;
+cout << product << endl;
+
+return 0;
 }

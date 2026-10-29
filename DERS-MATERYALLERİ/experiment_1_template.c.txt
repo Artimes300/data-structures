@@ -1,0 +1,106 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_DAYS 30
+#define PRODUCTS 2
+#define METRICS 2
+
+int read_int(const char *prompt, int min, int max) {
+    int value;
+
+    printf("%s", prompt);
+    while (scanf("%d", &value) != 1 || value < min || value > max) {
+        while (getchar() != '\n');
+        printf("Invalid input. Enter a value from %d to %d: ", min, max);
+    }
+    return value;
+}
+
+double read_double(const char *prompt, double min, double max) {
+    double value;
+
+    printf("%s", prompt);
+    while (scanf("%lf", &value) != 1 || value < min || value > max) {
+        while (getchar() != '\n');
+        printf("Invalid input. Enter a value from %.2f to %.2f: ", min, max);
+    }
+    return value;
+}
+
+int **create_matrix(int *days) {
+
+    return NULL;
+}
+
+void delete_matrix(int **sales, int days) {
+
+}
+
+void add_day(int **sales, int *days) {
+
+}
+
+void remove_day(int **sales, int *days) {
+
+}
+
+void update_element(int **sales, int days) {
+
+}
+
+void update_unit_values(double unit_values[][METRICS]) {
+
+}
+
+void print_totals(int **sales, int days, double unit_values[][METRICS]) {
+
+}
+
+int main(void) {
+    int **sales = NULL;
+    int days = 0;
+    double unit_values[PRODUCTS][METRICS] = {{5.0, 2.0}, {8.0, 4.0}};
+    int choice;
+
+    do {
+        printf("\nCOMP 2233 LAB 04 - EXPERIMENT 1: CAFE SALES\n");
+        printf("1. Create the sales matrix\n");
+        printf("2. Add a sales day\n");
+        printf("3. Remove a sales day\n");
+        printf("4. Update a sales element\n");
+        printf("5. Update unit revenue and cost\n");
+        printf("6. Calculate daily totals\n");
+        printf("7. Delete the sales matrix\n");
+        printf("0. Exit\n");
+        choice = read_int("Choice: ", 0, 7);
+
+        if (choice == 1) {
+            if (sales != NULL) {
+                printf("The matrix already exists.\n");
+            } else {
+                sales = create_matrix(&days);
+            }
+        } else if (choice == 5) {
+            update_unit_values(unit_values);
+        } else if (choice != 0 && sales == NULL) {
+            printf("Create the sales matrix first.\n");
+        } else if (choice == 2) {
+            add_day(sales, &days);
+        } else if (choice == 3) {
+            remove_day(sales, &days);
+        } else if (choice == 4) {
+            update_element(sales, days);
+        } else if (choice == 6) {
+            print_totals(sales, days, unit_values);
+        } else if (choice == 7) {
+            delete_matrix(sales, days);
+            sales = NULL;
+            days = 0;
+        }
+    } while (choice != 0);
+
+    if (sales != NULL) {
+        delete_matrix(sales, days);
+    }
+    return 0;
+}
