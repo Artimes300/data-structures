@@ -1,4 +1,4 @@
-# 📚 COMP 2233 — Data Structures
+# COMP 2233 — Data Structures
 
 > A hands-on study repo covering all topics in COMP 2233 Data Structures.  
 > Built to understand fundamentals deeply — implemented from scratch with complexity analysis.
