@@ -3,13 +3,9 @@
 > A hands-on study repo covering all topics in COMP 2233 Data Structures.  
 > Built to understand fundamentals deeply — implemented from scratch with complexity analysis.
 
-[![Language](https://img.shields.io/badge/Language-C%20%2F%20C%2B%2B-blue)](https://isocpp.org/)
-[![Topics](https://img.shields.io/badge/Topics-7-green)](#topics)
-[![Labs](https://img.shields.io/badge/Labs-5-orange)](#lab-work)
-
 ---
 
-## 🗺️ Topics
+##  Topics
 
 | # | Topic | Big-O Focus | Status |
 |---|-------|-------------|--------|
@@ -21,7 +17,7 @@
 
 ---
 
-## 🧪 Lab Work
+##  Lab Work
 
 | Lab | Experiment | Concept | Solution |
 |-----|-----------|---------|---------|
@@ -35,7 +31,7 @@
 
 ---
 
-## 🧠 Key Concepts Cheatsheet
+##  Key Concepts Cheatsheet
 
 ### Big-O Complexity Order
 ```
@@ -53,7 +49,7 @@ O(1) < O(log n) < O(n) < O(n log n) < O(n²) < O(2ⁿ)
 
 ---
 
-## 🛠️ Build & Run
+##  Build & Run
 
 ```bash
 # C files
